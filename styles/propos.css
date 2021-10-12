@@ -1,0 +1,35 @@
+.main{
+    /*margin-top:40px;*/
+    height:100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white no-repeat scroll 0 0 / 100% auto;
+}
+.main .content .card{
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+.main .content .card .left{
+    flex : 0 0 30%;
+    padding: 20px;
+    background-color: white;
+    color: black;
+    font-family: 'Playfair Display', serif;
+}
+.main .content .card.right{
+    flex : 0 0 70%;
+}
+.main .content .card img{
+    height: 400px;
+    width: 700px;
+    margin-top: 5px;
+    padding: 5px;
+    border : solid 3px rgba(66, 61, 61, 0.10);
+}
+.main h1{
+    color: rgba(255,86,95,255);
+}

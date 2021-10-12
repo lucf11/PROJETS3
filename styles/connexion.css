@@ -1,71 +1,76 @@
-.container{
-    height: 100%;
-    width: 100%;
-    /* display: flex;
-    flex-direction: column;
-    justify-content: space-between; */
-    margin: 0px;
-    background-color: red;
-
-}
- 
-.block{
-    background: blue;
-}
-
-.block form{
-    /* background-color: #fff; */
+.container .block form {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    height: 100%;
+    margin-top: 100px;
+}
+
+.container, .block{
+    /* height: 100%; */
+    display: flex;
+    align-items: center;
+}
+
+.fond{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+}
+
+.titre, label, input{
+    font-family: 'Oswald', sans-serif;
+    color: #4bC2BC;
+}
+
+
+
+.titre h1{
+    margin: 50px 0 0 0;
 }
 
 input, label{
-    width: 20%;
-    height: auto;
-    padding: 20px;
+    margin: 5px 0px;
+    border-color: black;
+    font-size: 18px;
+}
+input:last-child{
+    color:white;
+    background-color: #4bC2BC;
+    padding: 14px;
+    border-radius: 4px;
+    margin-top: 30px;
 }
 
-nav{
-    display:flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    /*border: 5px solid rgba(66, 61, 61, 0.973);*/
-    background-color: white;
+input:last-child:hover{
+    background-color: #96a7a8;
+
 }
 
-nav .onglets a{
-    text-decoration: none;
+input.champ{
+    background-color:#ecf0f1 ;
     color:black;
+    font-family: 'Oswald', sans-serif;
+}
+
+.fond #header{
+    background-color: #4bC2BC; 
+}
+
+.fond #header #conteneur{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-family:  'Oswald', sans-serif;
+}
+.fond #header #conteneur img{
     margin-right: 10px;
-    border-bottom: 1px solid black;
-    padding-bottom: 5px;
-    transition: border 0.3s ease-in-out;
-    border-bottom: 1px solid transparent;
-}
-nav .onglets a:hover{
-    border-color:black;
-}
-nav .onglets{
-    margin-top : 3px;
-    margin-left: 300px;
-    
-}
-img{
-    width: 105px;
-    height: 105px;
-}
-div#conteneur{
-    display: flex;
-    width: 30%;
-}
-div#conteneur h1{
-    align-self: center;
-}
-div#MenuHaut{
-    display: flex;
-    justify-content: flex-start;
-    border-bottom:solid 5px #6f6f6f;
 }
