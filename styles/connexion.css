@@ -10,7 +10,6 @@
 }
  
 .block{
-    padding: 100px;
     background: blue;
 }
 
@@ -26,4 +25,47 @@ input, label{
     width: 20%;
     height: auto;
     padding: 20px;
+}
+
+nav{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    /*border: 5px solid rgba(66, 61, 61, 0.973);*/
+    background-color: white;
+}
+
+nav .onglets a{
+    text-decoration: none;
+    color:black;
+    margin-right: 10px;
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+    transition: border 0.3s ease-in-out;
+    border-bottom: 1px solid transparent;
+}
+nav .onglets a:hover{
+    border-color:black;
+}
+nav .onglets{
+    margin-top : 3px;
+    margin-left: 300px;
+    
+}
+img{
+    width: 105px;
+    height: 105px;
+}
+div#conteneur{
+    display: flex;
+    width: 30%;
+}
+div#conteneur h1{
+    align-self: center;
+}
+div#MenuHaut{
+    display: flex;
+    justify-content: flex-start;
+    border-bottom:solid 5px #6f6f6f;
 }
