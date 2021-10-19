@@ -20,7 +20,7 @@
                 <h1>Connectez-vous</h1>
             </div>
             <div class="block">
-                <form action="" method="post">
+                <form action="login.php" method="post">
                     <label>Identifiant</label>
                     <input class="champ" type="text" name="id" required>
                     <label>Mot de passe</label>
