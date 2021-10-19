@@ -67,6 +67,7 @@ footer{
     background-color: rgb(30, 49, 75);
     color: white;
     padding: 30px 100px;
+
 }
 footer h3{
     font-family: 'Playfair  Display', serif;
@@ -91,4 +92,88 @@ footer .services .service  p{
 }
 footer #contact{
     color: rgb(181, 181, 181)
+}
+
+
+
+
+
+/* je met le style de la page connexion ici car je ne sais pas
+pourquoi met quand j'ouvre via github le css est cassé */
+
+.container .block form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    margin-top: 100px;
+}
+
+.container, .block{
+    /* height: 100%; */
+    display: flex;
+    align-items: center;
+}
+
+.fond{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+}
+
+.titre, label, input{
+    font-family: 'Oswald', sans-serif;
+    color: #4bC2BC;
+}
+
+
+
+.titre h1{
+    margin: 50px 0 0 0;
+}
+
+input, label{
+    margin: 5px 0px;
+    border-color: black;
+    font-size: 18px;
+}
+input:last-child{
+    color:white;
+    background-color: #4bC2BC;
+    padding: 14px;
+    border-radius: 4px;
+    margin-top: 30px;
+}
+
+input:last-child:hover{
+    background-color: #96a7a8;
+
+}
+
+input.champ{
+    background-color:#ecf0f1 ;
+    color:black;
+    font-family: 'Oswald', sans-serif;
+}
+
+.fond #header{
+    background-color: #4bC2BC; 
+}
+
+.fond #header #conteneur{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-family:  'Oswald', sans-serif;
+}
+.fond #header #conteneur img{
+    margin-right: 10px;
 }
