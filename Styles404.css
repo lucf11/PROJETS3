@@ -2,7 +2,7 @@ body{
     margin:0;
     padding:0;
     min-height: 100vh;
-    background: linear-gradient(125deg,#78e08f,#b8e994);
+    background: linear-gradient(125deg,#0a3d62,#3c6382);
     display: flex;
     justify-content: center;
     font-family: "montserrat",sans-serif;
