@@ -5,21 +5,69 @@
         <meta name="viewport" content="width=device-width initial-scale=1.0"/>
         <title>CHEZ PAPE MARIUS</title>
         <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="Styles.css" />
     </head>
      
     <body>
-        <div id="MenuHaut">
-            <div id="conteneur">
-                <img src="/img/logo_v2.png" alt="univ">
-                <h1>Université de Montpellier</h1>
+        <div class="sidebar">
+            <div class="logo-details">
+                <box-icon type='logo' name='medium'></box-icon>
+                <div class="logo_name">Université</div>
+                <i class='bx bx-menu' id="btn" ></i>
             </div>
-            <nav>
-                    <div class="onglets">
-                        <a href="">Accueil</a>
-                        <a href="#">A Propos</a>
-                    </div>
-            </nav>
-        </div>
+            <ul class="nav-list">
+              <li>
+                  <i class='bx bx-search' ></i>
+                 <input type="text" placeholder="Rechercher">
+                 <span class="tooltip">Rechercher</span>
+              </li>
+              <li>
+                <a href="/index.php">
+                    <i class='bx bx-user' ></i>
+                  <span class="links_name">Connexion</span>
+                </a>
+                 <span class="tooltip">Connexion</span>
+              </li>
+              <li>
+               <a href="#">
+                <i class='bx bx-folder' ></i>
+                    <span class="links_name">Importer le CSV</span>
+               </a>
+               <span class="tooltip">Importer le CSV</span>
+             </li>
+             <li>
+                <a href="/pagesMentionslegales.html">
+                    <i class=' bx bx-bookmarks' ></i>
+                     <span class="links_name">Mentions Légales</span>
+                </a>
+                <span class="tooltip">Mentions Légales</span>
+              </li>
+            </ul>
+           </div>  
+          <script>
+          let sidebar = document.querySelector(".sidebar");//déf des classes 
+          let closeBtn = document.querySelector("#btn");
+          let searchBtn = document.querySelector(".bx-search");
+        
+          closeBtn.addEventListener("click", ()=>{
+            sidebar.classList.toggle("open");
+            menuBtnChange();//appel de la fcontion
+          });
+        
+          searchBtn.addEventListener("click", ()=>{ // le menu va s'ouvrir si on clique sur la barre de recherche
+            sidebar.classList.toggle("open");
+            menuBtnChange(); 
+          });
+        
+          // code pour changer le logo du menu quand il est ouvert 
+          function menuBtnChange() {
+           if(sidebar.classList.contains("open")){
+             closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//on remplace le logo de menu 
+           }else {
+             closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//on le remet d'origine 
+           }
+          }
+          </script>
         <section class="main" id="products">
             <div id="txt">
                 <p>Merci de lire avec attention les différentes modalités d’utilisation du présent site avant d’y parcourir ses pages. En vous connectant sur ce site, vous acceptez, sans réserves, les présentes modalités.
