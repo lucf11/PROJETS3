@@ -7,8 +7,13 @@ class Controlleur{
         require('../view/list.php');
     }
 
+    public static function readAllAgreger(){
+        require('../view/listAgreger.php');
+    }
+    
     public static function read(){
         require('../view/detail.php');
     }
+    
 }
 ?>

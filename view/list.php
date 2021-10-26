@@ -7,8 +7,11 @@
     <title>Affichage Dossier</title>
 </head>
 <body>
+    <?php include('../components/menu.php'); ?> 
     <?php
-    /// affichage des dossiers de tous les étudiants.
+      ///affichage de la liste d'etudiant.
     ?>
+    <?php include('../components/footer.php'); ?>
+
 </body>
 </html>

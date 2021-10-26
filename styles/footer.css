@@ -1,0 +1,32 @@
+footer{
+    position : relative;
+    margin-top: 40px;
+    border-top: solid 5px #6f6f6f;
+    background-color: rgb(30, 49, 75);
+    color: white;
+    padding: 30px 100px;
+}
+footer h3{
+    font-family: 'Playfair  Display', serif;
+    color: rgba(255,86,95,255);
+    width: 50%;
+    padding-bottom: 5px;
+}
+footer .services{
+    margin-top: -10px;
+    display:flex;
+    flex-wrap: wrap;
+
+}
+footer .services .service{
+    margin-right: 30px;
+    padding : 10px;
+
+
+}
+footer .services .service  p{
+    max-width: 300px;
+}
+footer #contact{
+    color: rgb(181, 181, 181)
+}

@@ -1,7 +1,31 @@
+@import '/styles/footer.css';
+@import '/styles/menu.css';
+
+html{
+    scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+}
+body{
+    margin:0;
+    padding: 0;
+    font-family: 'Playfair Display', serif;
+    /*font-family: 'Playfair Display', serif;*/
+}
+
+img{
+    width: 105px;
+    height: 105px;
+}
+
+
 .main{
     /*margin-top:40px;*/
-    height:100vh;
     display: flex;
+    flex-wrap: wrap-reverse;
     flex-direction: column;
     align-items: center;
     background: white no-repeat scroll 0 0 / 100% auto;
@@ -32,4 +56,53 @@
 }
 .main h1{
     color: rgba(255,86,95,255);
+}
+@media screen and (max-width: 900px){
+    .main .content .card img{
+        width : 60%;
+        height : 60%;
+    }
+    nav{
+        display:none;
+    }
+    .main .content .card{
+        display: flex;
+        justify-content: flex-end;
+    }
+    .main{
+       flex-wrap: wrap; 
+    }
+    p{
+        width:70vw;
+        height: 25vh;
+    }
+    .main .content .card .right{
+        display: flex;
+        justify-content: center;
+    }
+    .main .content .card .left{
+        height:25vh;
+    }
+    footer{
+        padding:5px;
+       height: 100vh;
+       display: flex;
+       flex-direction: column; 
+       justify-content: flex-end;
+    }
+    footer .services .service{
+        /*display:inline-block;*/
+        height: 25vh;
+        width: 45vw;
+        
+        
+    }
+    footer .services{
+        display: flex;
+        justify-content:center;
+        width: 95vw;
+        /*display: inline-block;*/
+      
+        
+    }
 }

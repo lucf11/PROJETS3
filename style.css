@@ -1,7 +1,4 @@
-@import '/styles/connexion.css';
-@import '/styles/propos.css';
-@import '/styles/mentionslegal.css';
-
+@import '/styles/footer.css';
 html{
     scroll-behavior: smooth;
     height: 100%;
@@ -18,88 +15,6 @@ body{
     font-family: 'Playfair Display', serif;
     /*font-family: 'Playfair Display', serif;*/
 }
-nav{
-    display:flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    background-color: inherit;
-    /*border: 5px solid rgba(66, 61, 61, 0.973);*/
-}
-
-nav .onglets a{
-    text-decoration: none;
-    color:black;
-    margin-right: 10px;
-    border-bottom: 1px solid black;
-    padding-bottom: 5px;
-    transition: border 0.3s ease-in-out;
-    border-bottom: 1px solid transparent;
-}
-nav .onglets a:hover{
-    border-color:black;
-}
-nav .onglets{
-    margin-top : 3px;
-    margin-left: 300px;
-    
-}
-img{
-    width: 105px;
-    height: 105px;
-}
-div#conteneur{
-    display: flex;
-    width: 30%;
-}
-div#conteneur h1{
-    align-self: center;
-}
-div#MenuHaut{
-    display: flex;
-    justify-content: flex-start;
-    border-bottom:solid 5px #6f6f6f;
-    background-color: #4bC2BC;
-}
-footer{
-    margin-top: 40px;
-    border-top: solid 5px #6f6f6f;
-    background-color: rgb(30, 49, 75);
-    color: white;
-    padding: 30px 100px;
-
-}
-footer h3{
-    font-family: 'Playfair  Display', serif;
-    color: rgba(255,86,95,255);
-    width: 50%;
-    padding-bottom: 5px;
-}
-footer .services{
-    margin-top: -10px;
-    display:flex;
-    flex-wrap: wrap;
-
-}
-footer .services .service{
-    margin-right: 30px;
-    padding : 10px;
-
-
-}
-footer .services .service  p{
-    max-width: 300px;
-}
-footer #contact{
-    color: rgb(181, 181, 181)
-}
-
-
-
-
-
-/* je met le style de la page connexion ici car je ne sais pas
-pourquoi met quand j'ouvre via github le css est cassé */
 
 .container .block form {
     display: flex;

@@ -15,7 +15,6 @@ class Conf {
     // Sur votre machine personelle, vous avez creez ce mdp a l'installation
     'password' => '061004132EB'
   );
-  
   static private $debug = True; 
     
   static public function getDebug() {
