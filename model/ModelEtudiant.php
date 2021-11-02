@@ -2,9 +2,13 @@
 
 class ModelEtudiant{
 
+    private $numeroNIP;
+    private $idDossier;
     private $nomEtudiant;
-    private $numINE;
-    private $
+    private $rangIUT;
+    private $baccalaureat;
+    private $classementGlobale;
+    private $moyenneGlobale;
     
 }
 
@@ -20,5 +24,19 @@ public static function getAllEtudiants(){
     }
     return $tab_Etud;
 }
+
+public function __construct($numeroNIP = NULL, $idDossier = NULL, $nomEtudiant = NULL , $rangIUT=NULL,$baccalaureat=NULL, $classementGlobale=NULL, $moyenneGlobale=NULL) {
+    if(!is_null($numeroNIP)&& !is_null($idDossier)&& !is_null($nomEtudiant) && !is_null($rangIUT) && !is_null($baccalaureat) && !is_null($classementGlobale) && !is_null($moyenneGlobale)){
+        $this->numeroNIP = $numeroNIP;
+        $this->idDossier = $idDossier;
+        $this->nomEtudiant= $nomEtudiant;
+        $this->rangIUT = $rangIUT;
+        $this->baccalaureat = $baccalaureat;
+        $this->classementGlobale = $classementGlobale;
+        $this->moyenneGlobale = $moyenneGlobale;
+    }
+}
+
+
 
 ?>
