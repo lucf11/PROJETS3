@@ -66,7 +66,7 @@ public static function getEtudiantByNIP($nip){
             $req_prep->execute($values);
 
             // On récupère les résultats comme précédemment
-            $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelModule');
+            $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelEtudiant');
             $tab_etud = $req_prep->fetchAll();
         }catch(PDOException $e){
             echo $e->getMessage();
