@@ -12,6 +12,32 @@ class ModelEtudiant{
     
 }
 
+public function getNumeroNIP() {
+    return $this->numeroNIP;
+}
+
+public function getIdDossier() {
+    return $this->idDossier;
+}
+
+public function getNomEtudiant() {
+    return $this->nomEtudiant;
+}
+
+public function getRangIUT() {
+    return $this->rangIUT;
+}
+
+public function getBaccalaureat() {
+    return $this->baccalaureat;
+}
+public function getClassementGlobale() {
+    return $this->classementGlobale;
+}
+public function getMoyenneGlobale() {
+    return $this->moyenneGlobale;
+}
+
 public static function getAllEtudiants(){
     require_once('Model.php');
     try{
@@ -23,6 +49,33 @@ public static function getAllEtudiants(){
            echo $e->getMessage();
     }
     return $tab_Etud;
+}
+
+public static function getEtudiantByNIP($nip){
+     require_once "Model.php";
+        $sql = "SELECT * from projetS3_Etudiant WHERE numeroNIP=:nom_tag";
+        // Préparation de la requête
+        try{
+            $req_prep = Model::getPDO()->prepare($sql);
+
+            $values = array(
+                "nom_tag" => $nip,
+                //nomdutag => valeur, ...
+            );
+            // On donne les valeurs et on exécute la requête     
+            $req_prep->execute($values);
+
+            // On récupère les résultats comme précédemment
+            $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelModule');
+            $tab_etud = $req_prep->fetchAll();
+        }catch(PDOException $e){
+            echo $e->getMessage();
+        }
+        // Attention, si il n'y a pas de résultats, on renvoie false
+        if (empty($tab_etud))
+            return false;
+        return $tab_etud[0];
+    
 }
 
 public function __construct($numeroNIP = NULL, $idDossier = NULL, $nomEtudiant = NULL , $rangIUT=NULL,$baccalaureat=NULL, $classementGlobale=NULL, $moyenneGlobale=NULL) {

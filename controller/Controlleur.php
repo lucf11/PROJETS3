@@ -1,5 +1,7 @@
 <?php
 require_once ('../model/ModelEtudiant.php'); // chargement du modèle
+require_once ('../model/ModelModule.php');
+require_once ('../model/ModelUtilisateur.php');
 class ControllerEtudiant {
     public static function readAll() {
         $tab_v = ModelEtudiant::getAllEtudiants();     //appel au modèle pour gerer la BD
@@ -33,7 +35,7 @@ class ControllerEtudiant {
     }
     public static function read(){
     	$numEtud = $_GET['codeNIP'];
-    	$v = ModelProduit::getEtudiantByNIP($numEtud);//appel au modèle pour gerer la BD
+    	$v = ModelEtudiant::getEtudiantByNIP($numEtud);//appel au modèle pour gerer la BD
         $controller='etudiant';
     	if($v == false){
             $view = 'error';
@@ -59,7 +61,7 @@ class ControllerEtudiant {
     	$login = $_POST['login'];
     	$password = $_POST['password'];
     	$permission = $_POST['permission'];
-    	$etudiant = new ModelEtudiant($idUtilisateur,$login,$password,$permission);
+    	$etudiant = new ModelUtilisateur($idUtilisateur,$login,$password,$permission);
     	$etudiant->save();
     	ControllerEtudiant::readAll();
         $controller = 'etudiant';
