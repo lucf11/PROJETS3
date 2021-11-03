@@ -44,6 +44,20 @@ class ModelModule {
             return false;
         return $tab_mod[0];
     }
+
+    public static function getAllModules(){
+        require_once('Model.php');
+        try{
+            $rep = Model::getPDO()->query('SELECT * FROM Modules');
+            $rep->setFetchMode(PDO::FETCH_CLASS, 'modelModule');
+            $tab_mods = $rep->fetchAll();      
+        }
+        catch(PDOException $e){
+           echo $e->getMessage();
+        }
+        return $tab_mods;
+    }
+    
     public static function getAggregbyID($idAggreg){
         require_once "Model.php";
         $sql = "SELECT idModule from p_ListeModuleAggrege WHERE idAggreg=:nom_tag";
