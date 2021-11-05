@@ -13,12 +13,23 @@ class ModelUtilisateur {
     public function setidUtilisateur($id) {
         $this->idUtilisateur = $id;
     }
-    public function setPassword($pswd)
+    public function setPassword($pswd){
         $this->password = $pswd;
     }
     public function setPermission($p){
         $this->permission = $p;
     }
+    //getter
+    public function getidUtilisateur() {
+        return $this->idUtilisateur;
+    }
+    public function getPassword(){
+        return $this->password;
+    }
+    public function getPermission(){
+        return $this->permission;
+    }
+
     public static function getAllUtilisateurs(){
         require_once('Model.php');
         try{
@@ -33,7 +44,7 @@ class ModelUtilisateur {
     }
     public static function getUtilbyID($id){
         require_once "Model.php";
-        $sql = "SELECT * from p_Utilisateur WHERE idUtilisateur=:nom_tag";
+        $sql = "SELECT * from Utilisateur WHERE idUtilisateur=:nom_tag";
         // Préparation de la requête
         try{
             $req_prep = Model::getPDO()->prepare($sql);

@@ -11,7 +11,7 @@ class ControllerUtilisateur {
 
     }
     public static function read(){
-    	$id = $_POST['idUtilisateur'];
+    	$id = $_GET['idUtilisateur'];
     	$v = ModelUtilisateur::getUtilByID($id);//appel au modèle pour gerer la BD
         $controller='utilisateur';
     	if($v == false){
@@ -20,7 +20,7 @@ class ControllerUtilisateur {
     		require ('../view/utilisateur/view.php');//redirige vers la vue de produit non reconnu 
     	}else{
             $view = 'detail';
-            $pagetitle = 'Détail de l''utilisateur';    
+            $pagetitle = 'Détail de l\'utilisateur';    
             $filepath = File::build_path(array("view",$controller, "view.php"));
             require ($filepath);  //"redirige" vers la vue
     	}
