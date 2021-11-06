@@ -45,5 +45,23 @@ class ControllerUtilisateur {
         require ($filepath);  //"redirige" vers la vue
         require_once '../view/utilisateur/list.php';
     }
+
+    public static function connect(){
+        $view = 'connect';
+        $controller = 'utilisateur';
+        $filepath = File::build_path(array("view",$controller, "view.php"));
+        require ($filepath);  //"redirige" vers la vue
+    }
+    public static function connected(){
+        $idUtilisateur = $_POST['id'];
+        $password = $_POST['mdp'];
+        if(ModelUtilisateur::checkPassword($idUtilisateur, $password)){
+            require_once('ControlleurEtudiant.php');
+            ControlleurEtudiant::readAll();  // checkpassword est true donc le user peut se co, il est donc renvoyé vers l'affichage des étudiants.
+        }
+    }
+    public static function deconnect(){
+        // ici il faut kill la session de l'utilisateur et le renvoyé vers la page de connexion
+    }
 }
 ?>

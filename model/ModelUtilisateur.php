@@ -30,6 +30,20 @@ class ModelUtilisateur {
         return $this->permission;
     }
 
+    public static function checkPassword($login, $mdp){
+        require_once('Model.php');
+        $rep = Model::getPDO()->query("SELECT * FROM Utilisateur WHERE idUtilisateur='$login' and password='$mdp'");
+        $req_rep = Model::getPDO()->prepare($rep);
+        $req_rep->execute();
+        $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelUtilisateur');
+        $tab_util = $req_prep->fetchAll();
+        if(!empty($tab_util)){
+            return true;     // si il y a un resultat un renvoie true car ca veut dire que ce user existe
+        }else{
+            return false;
+        }
+    }
+
     public static function getAllUtilisateurs(){
         require_once('Model.php');
         try{

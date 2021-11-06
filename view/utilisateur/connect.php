@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../style.css">
     <title>Login - UM</title>
 </head>
 <body>
     <div class="fond">
         <div id="header">
             <div id="conteneur">
-                <img src="img/logo_v2.png" alt="univ">
+                <img src="../../img/logo_v2.png" alt="univ">
                 <h1>Université de Montpellier</h1>
             </div>
         </div>
@@ -20,7 +20,7 @@
                 <h1>Connectez-vous</h1>
             </div>
             <div class="block">
-                <form action="login.php" method="post">
+                <form action="connected.php" method="post">
                     <label>Identifiant</label>
                     <input class="champ" type="text" name="id" required>
                     <label>Mot de passe</label>
