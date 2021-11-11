@@ -56,11 +56,11 @@ class ModelModule {
         }
         return $tab_mods;
     }
-    public function getNoteBycodeNIP($id){
+    public function getNoteBycodeNIP($id, $idmodule){
         require_once "Model.php";
         //var_dump($this->idModule);
         //var_dump($id);
-        $sql = "SELECT noteModule from notemodule WHERE codeNIP=:nom_tag AND idModule='{$this->idModule}'";//sélection de la note de l'étudiant sur le module correspondant
+        $sql = "SELECT noteModule from notemodule WHERE codeNIP=:nom_tag AND idModule='{$idModule}'";//sélection de la note de l'étudiant sur le module correspondant
         // Préparation de la requête
         try{
             $req_prep = Model::getPDO()->prepare($sql);

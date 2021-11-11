@@ -19,7 +19,7 @@ class ControllerEtudiant {
             $moyenne = 0;
             $cpt = 0;
             foreach($tab_listeModules as $v){
-                $tab_notes = $v->getNoteBycodeNIP($value->getcodeNIP());
+                $tab_notes = $v->getNoteBycodeNIP($value->getcodeNIP(),$value->getcodeNIP());
                 //var_dump($tab_notes[0]);
                 $moyenne = $moyenne + $tab_notes[0];
                 $cpt = $cpt + 1;

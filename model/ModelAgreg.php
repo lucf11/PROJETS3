@@ -92,5 +92,40 @@ class ModelAgreg{
             echo $e->getMessage();
         }
     }
+
+    public static function calculerNote($id, $numNIP){
+        require_once('Model.php');
+        require_once('ModelModule.php');
+        $sql = "SELECT idModule from ListeModuleAgreger WHERE idAgregation=:nom_tag";
+        try{
+            $req_prep = Model::getPDO()->prepare($sql);
+
+            $values = array(
+                "nom_tag" => $id,
+                //nomdutag => valeur, ...
+            );
+            // On donne les valeurs et on exécute la requête     
+            $req_prep->execute($values);
+
+            // On récupère les résultats comme précédemment
+            $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelAgreg');
+            $tab_idmodul = $req_prep->fetchAll();
+        }catch(PDOException $e){
+            echo $e->getMessage();
+        }
+        // Attention, si il n'y a pas de résultats, on renvoie false
+        if (empty($tab_idmodul))
+            return false;
+        $total = 0;
+        $cpt = 0;
+        foreach($tab_idmodul as $m){
+            $note = ModelModule::getNoteBycodeNIP($numNIP, $idmodul);
+            $total = $total + $note;
+            $cpt++;
+        }
+        return $total / $cpt;
+        
+
+    }
 }
 ?>
