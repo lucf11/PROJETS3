@@ -14,6 +14,8 @@
       '<div class="bac">'$v->getBaccalaureat()'</div>'.
       '<div class="classementGlobale">'$v->getClassementGlobale()'</div>'.
       '<div class="moyenne">'$v->getMoyenneGlobale()'</div>'
+
+      /// afficher toutes les infos de l'étudiants.
     ?>
     <?php include('../components/footer.php'); ?>
 
