@@ -30,6 +30,7 @@ class ControllerAgreg{
         $view = 'create';
         $pagetitle  = 'Creation dune note agréger';
         $controller = 'agreg';
+        $tab_module = ModelModule::getAllModules(); 
         $filepath = File::build_path(array("view",$controller, "view.php"));
         require ($filepath);  //"redirige" vers la vue
     }
@@ -38,7 +39,7 @@ class ControllerAgreg{
     	$idAgregation = $_POST['idAgregation'];
     	$nom = $_POST['nom'];
     	$coeff = $_POST['coeff'];
-    	$agregation = new ModelUtilisateur($idAgregation,$nom,$coeff);
+    	$agregation = new ModelAgreg($idAgregation,$nom,$coeff);
     	$agregation->save();
     	ControllerAgreg::readAll();
         $controller = 'agreg';
