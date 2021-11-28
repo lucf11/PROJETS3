@@ -12,6 +12,7 @@
       ///affichage de la liste d'etudiant.
       foreach($tab_v a $v)
         echo 'Nom : ' . $v->getNomEtudiant() . 'moyenne : ' . $v->getMoyenneGlobale();
+        echo '<a href="../../controller/index.php?action=read&controller=etudiant">Afficher le détails de l\'étudiant</a>';
               
     ?>
     <?php include('../components/footer.php'); ?>

@@ -51,5 +51,16 @@ class ControllerEtudiant {
     	}
     } 
     //il n'y aura pas de create et created() pour le controllerEtudiant mais pour le contollerUtilisateur -> on généralise le tout -
+
+    public static function donnerAvis(){
+        $numEtud = $_GET['codeNIP'];
+    	$v = ModelEtudiant::getEtudiantByNIP($numEtud);//appel au modèle pour gerer la BD
+        $view = 'avis';
+        $controller='etudiant';
+        $pagetitle = 'Avis sur l\'etudiant';    
+        $filepath = File::build_path(array("view",$controller, "view.php"));
+        require ($filepath);  //"redirige" vers la vue
+
+    }
 }
 ?>

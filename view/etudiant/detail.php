@@ -13,10 +13,11 @@
       '<div class="rang">'$v->getRangIUT()'</div>'.
       '<div class="bac">'$v->getBaccalaureat()'</div>'.
       '<div class="classementGlobale">'$v->getClassementGlobale()'</div>'.
-      '<div class="moyenne">'$v->getMoyenneGlobale()'</div>'
-
+      '<div class="moyenne">'$v->getMoyenneGlobale()'</div>';
+      echo '<a href="/controller/index.php?action=donnerAvis&controller=etudiant">Donner un avis sur l\'étudiant</a>';
       /// afficher toutes les infos de l'étudiants.
     ?>
+
     <?php include('../components/footer.php'); ?>
 
 </body>
