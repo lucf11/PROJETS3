@@ -9,7 +9,7 @@
     <p>Cochez les modules que vous voulez agréger</p>
     <?php
         foreach($tab_modules as $m){
-            echo '<input type="checkbox" name="'.{$m->getnomModule()}.'" id="'.{$m->getidModule()}.'" /> <label for="'.{$m->getnomModule()}.'">'.{$m->getnomModule()}.'</label><br />';
+            echo '<input type="checkbox" name="module[]" value="'.{$m->getidModule()}.'" id="'.{$m->getidModule()}.'" /> <label for="'.{$m->getnomModule()}.'">'.{$m->getnomModule()}.'</label><br />';
         }
     ?>
    </p>

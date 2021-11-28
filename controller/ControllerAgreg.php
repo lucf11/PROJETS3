@@ -41,6 +41,9 @@ class ControllerAgreg{
     	$coeff = $_POST['coeff'];
     	$agregation = new ModelAgreg($idAgregation,$nom,$coeff);
     	$agregation->save();
+        foreach($_POST['module'] as $value){
+            $insertListe = "INSERT INTO projetS3_ListeModuleAgreger VALUES('$idAgregation','$value')";
+        }
     	ControllerAgreg::readAll();
         $controller = 'agreg';
         $filepath = File::build_path(array("view",$controller, "view.php"));
