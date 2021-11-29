@@ -3,7 +3,7 @@ require_once('../model/ModelAgreg.php');
 class ControllerAgreg{
 
     public static function readAll() {
-        $tab_a = ModelAgreg::getAllAgreg();     //appel au modèle pour gerer la BD
+        $tab_a = ModelAggreg::getAllAgreg();     //appel au modèle pour gerer la BD
         $controller='agreg';
         $view='list';
         $pagetitle='Liste des notes agréger';
@@ -13,7 +13,7 @@ class ControllerAgreg{
     }
     public static function read(){
     	$id = $_POST['idAgregation'];
-    	$a = ModelAgreg::getAgregByID($id);//appel au modèle pour gerer la BD
+    	$a = ModelAggreg::getAgregByID($id);//appel au modèle pour gerer la BD
         $controller='agreg';
     	if($a == false){
             $view = 'error';
@@ -39,7 +39,7 @@ class ControllerAgreg{
     	$idAgregation = $_POST['idAgregation'];
     	$nom = $_POST['nom'];
     	$coeff = $_POST['coeff'];
-    	$agregation = new ModelAgreg($idAgregation,$nom,$coeff);
+    	$agregation = new ModelAggreg($idAgregation,$nom,$coeff);
     	$agregation->save();
         foreach($_POST['module'] as $value){
             $insertListe = "INSERT INTO projetS3_ListeModuleAgreger VALUES('$idAgregation','$value')";

@@ -9,7 +9,6 @@ class ControllerEtudiant {
         $pagetitle='Liste des étudiants';
         $filepath = File::build_path(array("view",$controller, "view.php"));
         require ($filepath);  //"redirige" vers la vue
-
     }
     public static function readAllAggreg(){
         $idAggreg = $_GET['idAggreg'];
