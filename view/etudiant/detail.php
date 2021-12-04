@@ -1,24 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Affichage Elève</title>
-</head>
-<body>
-    <?php include('../components/menu.php'); ?>
+<div class="etudiant">
     <?php
       echo '<div class="nomEtud">'. $v->getNomEtudiant()'</div>'.
       '<div class="rang">'$v->getRangIUT()'</div>'.
       '<div class="bac">'$v->getBaccalaureat()'</div>'.
       '<div class="classementGlobale">'$v->getClassementGlobale()'</div>'.
       '<div class="moyenne">'$v->getMoyenneGlobale()'</div>';
-      echo '<a href="/controller/index.php?action=donnerAvis&controller=etudiant">Donner un avis sur l\'étudiant</a>';
+      echo '<a href="/index.php?action=donnerAvis&controller=etudiant">Donner un avis sur l\'étudiant</a>';
       /// afficher toutes les infos de l'étudiants.
     ?>
 
-    <?php include('../components/footer.php'); ?>
 
-</body>
-</html>
+</div>

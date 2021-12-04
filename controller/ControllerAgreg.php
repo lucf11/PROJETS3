@@ -1,5 +1,10 @@
 <?php
-require_once('../model/ModelAgreg.php');
+$model_path_array = array('model/ModelAggreg.php');
+require_once File::build_Path($model_path_array); // chargement du modèle//TODO : utiliser le filepath pour portabilité
+$model_path_array = array('model/ModelModule.php');
+require_once File::build_Path($model_path_array); // chargement du modèle//TODO : utiliser le filepath pour portabilité
+// require_once ('../model/ModelAggreg.php'); // chargement du modèle
+
 class ControllerAgreg{
 
     public static function readAll() {
@@ -31,21 +36,61 @@ class ControllerAgreg{
         $pagetitle  = 'Creation dune note agréger';
         $controller = 'agreg';
         $tab_module = ModelModule::getAllModules(); 
+        $tab_agreg = ModelAggreg::getAllAgreg();
         $filepath = File::build_path(array("view",$controller, "view.php"));
         require ($filepath);  //"redirige" vers la vue
     }
     //création générale d'un util -> on différencie prof et etudiant avec les permissions
     public static function created(){
-    	$idAgregation = $_POST['idAgregation'];
     	$nom = $_POST['nom'];
     	$coeff = $_POST['coeff'];
-    	$agregation = new ModelAggreg($idAgregation,$nom,$coeff);
+    	$agregation = new ModelAggreg();
+        $agregation->setCoeff($coeff);
+        $agregation->setNom($nom);
     	$agregation->save();
-        foreach($_POST['module'] as $value){
-            $insertListe = "INSERT INTO projetS3_ListeModuleAgreger VALUES('$idAgregation','$value')";
+        $id = "SELECT MAX(idAgregation) FROM projetS3_NOTES_AGREGER";
+        try{
+            $req_prep1 = Model::getPDO()->prepare($id);
+            $req_prep1->execute();
+            $req_prep1->setFetchMode(PDO::FETCH_CLASS, 'int');
+            $idAgregation = $req_prep1->fetchAll();
+        }catch(PDOException $e){
+            echo $e->getMessage();
+        }
+    
+        if(!empty($_POST['module'])){
+
+            foreach($_POST['module'] as $value){
+                $insertListe = "INSERT INTO projetS3_ListeModuleAgreger VALUES('{$idAgregation[0][0]}','{$value}')";
+                //echo $sql;
+                //die();
+                // Préparation de la requête
+                try{
+                    $req_prep = Model::getPDO()->prepare($insertListe);
+                    $req_prep->execute();
+                }catch(PDOException $e){
+                    echo $e->getMessage();
+                }
+            }
+        }
+        if(!empty($_POST['agreg'])){
+
+            foreach($_POST['agreg'] as $v){
+                $insListe = "INSERT INTO projetS3_ListeModuleAgreger VALUES('{$idAgregation[0][0]}','{$v}')";
+                //echo $sql;
+                //die();
+                // Préparation de la requête
+                try{
+                    $req_prep2 = Model::getPDO()->prepare($insListe);
+                    $req_prep2->execute();
+                }catch(PDOException $e){
+                    echo $e->getMessage();
+                }
+            }
         }
     	ControllerAgreg::readAll();
         $controller = 'agreg';
+        $view='list';
         $filepath = File::build_path(array("view",$controller, "view.php"));
         require ($filepath);  //"redirige" vers la vue
     }

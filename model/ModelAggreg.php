@@ -1,6 +1,6 @@
 <?php
 
-class ModelAgreg{
+class ModelAggreg{
     private $idAgregation;
     private $nom;
     private $coeff;
@@ -22,17 +22,29 @@ class ModelAgreg{
         $this->coeff = $coeff;
     }
 
+    public function setNom($nom){
+        $this->nom = $nom;
+    }
+
     public static function getAllAgreg(){
-        require_once('Model.php');
+       
+        require_once "Model.php";
+        $sql = "SELECT * from projetS3_NOTES_AGREGER";
+        // Préparation de la requête
         try{
-            $rep = Model::getPDO()->query('SELECT * FROM NOTES_AGREGER');
-            $rep->setFetchMode(PDO::FETCH_CLASS, 'ModelAgreg');
-            $tab_Agreg = $rep->fetchAll();      
-        }
-        catch(PDOException $e){
+            $req_prep = Model::getPDO()->prepare($sql);
+            // On donne les valeurs et on exécute la requête     
+            $req_prep->execute();
+            // On récupère les résultats comme précédemment
+            $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelAggreg');
+            $tab_agreg = $req_prep->fetchAll();
+        }catch(PDOException $e){
             echo $e->getMessage();
         }
-        return $tab_Agreg;
+        // Attention, si il n'y a pas de résultats, on renvoie false
+        if (empty($tab_agreg))
+            return false;
+        return $tab_agreg;
     }
 
     public static function getModules($idAggreg){
@@ -96,7 +108,7 @@ class ModelAgreg{
     public  function save(){
         require_once 'Model.php';
         //'". str_replace( "'", "''", $s ) ."' 
-        $sql = "INSERT INTO p_NOTES_AGREGER VALUES('$this->idAgregation','$this->nom','$this->coeff')";
+        $sql = "INSERT INTO projetS3_NOTES_AGREGER VALUES('$this->idAgregation','$this->nom','$this->coeff')";
         //echo $sql;
         //die();
         // Préparation de la requête
@@ -120,7 +132,7 @@ class ModelAgreg{
         require_once('Model.php');
         require_once('ModelModule.php');
         $moyenne = 0;
-        $sql = "SELECT idAggregR FROM projets3_listemoduleagreger WHERE idAgregation=:nomtag AND idAggregR IS NOT NULL";
+        $sql = "SELECT idAggregR FROM projetS3_ListeModuleAgreger WHERE idAgregation=:nomtag AND idAggregR IS NOT NULL";
         try{
             $req_prep = Model::getPDO()->prepare($sql);
 
@@ -182,7 +194,7 @@ class ModelAgreg{
         require_once('ModelModule.php');
         $moyenne = 0;
         $cpt = 0;
-        $sql = "SELECT idModule FROM projets3_listemoduleagreger WHERE idAgregation=:nom_tag AND idModule IS NOT NULL";
+        $sql = "SELECT idModule FROM projetS3_ListeModuleAgreger WHERE idAgregation=:nom_tag AND idModule IS NOT NULL";
         
         try{
             $req_prep = Model::getPDO()->prepare($sql);

@@ -1,5 +1,6 @@
 <?php
-require_once ('../model/ModelModule.php'); // chargement du modèle
+$model_path_array = array('model/ModelModule.php');
+require_once File::build_Path($model_path_array); // chargement du modèle//TODO : utiliser le filepath pour portabilité
 class ControllerModule {
     public static function readAll() {
         $tab_v = ModelModule::getAllModules();     //appel au modèle pour gerer la BD

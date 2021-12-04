@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-	<meta charset="UTF-8">
-	<title>Création d'un utilisateur</title>
-</head>
-<body>
+
 	<form method="get" action="../../controller/index.php?action=created">
   <fieldset>
     <legend>Créez un utilisateur :</legend>
@@ -20,5 +14,3 @@
     </p>
   </fieldset> 
 </form>
-</body>
-</html>

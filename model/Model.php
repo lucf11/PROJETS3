@@ -6,7 +6,8 @@ class Model{
 	
 
 	public static function init(){
-		require_once "../config/Conf.php";
+		$model_path_array = array('config/Conf.php');
+		require_once File::build_Path($model_path_array); // chargement du modèle//TODO : utiliser le filepath pour portabilité
 		$host = Conf::getHostname();
 		$dbname = Conf::getDatabase();
 		$login = Conf::getLogin();

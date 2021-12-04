@@ -52,7 +52,7 @@ class ModelEtudiant{
     public static function getAllEtudiants(){
         require_once('Model.php');
         try{
-            $rep = Model::getPDO()->query('SELECT * FROM Etudiant');
+            $rep = Model::getPDO()->query('SELECT * FROM projetS3_Etudiant');
             $rep->setFetchMode(PDO::FETCH_CLASS, 'ModelEtudiant');
             $tab_Etud = $rep->fetchAll();      
         }
@@ -64,7 +64,7 @@ class ModelEtudiant{
 
     public static function getEtudiantByNIP($nip){
         require_once "Model.php";
-            $sql = "SELECT * from etudiant WHERE codeNIP=:nom_tag";
+            $sql = "SELECT * from projetS3_Etudiant WHERE NumeroNIP=:nom_tag";
             // Préparation de la requête
             try{
                 $req_prep = Model::getPDO()->prepare($sql);

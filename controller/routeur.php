@@ -1,10 +1,13 @@
 <?php
-require_once "/home/ann2/ferrierl/public_html/PHP/PROJETS3/lib/File.php";
-$path_array = array("controller/ControllerAgreg.php");
-require_once (File::build_Path($path_array));
-$path_array = array("controller/ControllerEtudiant.php");
-require_once(File::build_Path($path_array));
+// $path_array = array("ControllerAgreg.php");
+// require_once (File::build_Path($path_array));
+// $path_array = array("ControllerEtudiant.php");
+// require_once(File::build_Path($path_array));
 
+require_once ('controller/ControllerAgreg.php'); // chargement du modèle
+require_once ('controller/ControlleurEtudiant.php'); // chargement du modèle
+require_once ('controller/ControllerUtilisateur.php'); // chargement du modèle
+require_once ('controller/ControllerModule.php'); // chargement du modèle
 
 
 if (isset($_GET['action'])){ // On recupère l'action passée dans l'URL

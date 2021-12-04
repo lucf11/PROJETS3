@@ -1,5 +1,6 @@
 <?php
-require_once ('../model/ModelUtilisateur.php'); // chargement du modèle
+$model_path_array = array('model/ModelUtilisateur.php');
+require_once File::build_Path($model_path_array); // chargement du modèle//TODO : utiliser le filepath pour portabilité
 class ControllerUtilisateur {
     public static function readAll() {
         $tab_v = ModelUtilisateur::getAllUtilisateurs();     //appel au modèle pour gerer la BD
