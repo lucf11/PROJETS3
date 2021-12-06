@@ -1,6 +1,6 @@
 <form method="POST" action="index.php?action=created&controller=agreg">
   <fieldset>
-    <legend>Créez un utilisateur :</legend>
+    <legend>Créez une note agréger :</legend>
     <p>
       
       <!-- <input type="text" placeholder="idAgregation" name="idAgregation" id="idAgregation" required/> -->
