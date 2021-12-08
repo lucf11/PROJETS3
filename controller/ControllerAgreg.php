@@ -44,11 +44,12 @@ class ControllerAgreg{
     public static function created(){
     	$nom = $_POST['nom'];
     	$coeff = $_POST['coeff'];
-    	$agregation = new ModelAggreg();
-        $agregation->setCoeff($coeff);
-        $agregation->setNom($nom);
+        $idAgreg = $_POST['idAgregation'];
+    	$agregation = new ModelAggreg($idAgreg,$nom,$coeff);
+        // $agregation->setCoeff($coeff);
+        // $agregation->setNom($nom);
     	$agregation->save();
-        $id = "SELECT MAX(idAgregation) FROM projetS3_NOTES_AGREGER";
+        $id = "SELECT idAgregation FROM projetS3_NOTES_AGREGER ORDER BY idAgregation DESC LIMIT 1";
         try{
             $req_prep1 = Model::getPDO()->prepare($id);
             $req_prep1->execute();
@@ -88,11 +89,7 @@ class ControllerAgreg{
                 }
             }
         }
-    	ControllerAgreg::readAll();
-        $controller = 'agreg';
-        $view='list';
-        $filepath = File::build_path(array("view",$controller, "view.php"));
-        require ($filepath);  //"redirige" vers la vue
+        ControllerAgreg::readAll();
     }
 }
 

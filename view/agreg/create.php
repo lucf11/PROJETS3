@@ -3,7 +3,8 @@
     <legend>Créez une note agréger :</legend>
     <p>
       
-      <!-- <input type="text" placeholder="idAgregation" name="idAgregation" id="idAgregation" required/> -->
+      <input type="text" placeholder="idAgregation" name="idAgregation" id="idAgregation" required/>
+      
       <input type="text" placeholder="nom" name="nom" id="nom_id" required/>
       <input type="text" placeholder="coeff" name="coeff" id="coeff_id" required/>
     <p>Cochez les modules que vous voulez agréger</p>
