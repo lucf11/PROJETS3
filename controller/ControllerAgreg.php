@@ -91,6 +91,9 @@ class ControllerAgreg{
         }
         ControllerAgreg::readAll();
     }
+    public static function delete(){
+        
+    }
 }
 
 
