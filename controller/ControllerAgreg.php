@@ -75,7 +75,7 @@ class ControllerAgreg{
             }
         }
         if(!empty($_POST['agreg'])){
-
+            
             foreach($_POST['agreg'] as $v){
                 $insListe = "INSERT INTO projetS3_ListeModuleAgreger VALUES('{$idAgregation[0][0]}','{$v}')";
                 //echo $sql;

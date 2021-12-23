@@ -7,13 +7,13 @@ class Conf {
     'hostname' => 'webinfo',
     // A l'IUT, vous avez une BDD nommee comme votre login
     // Sur votre machine, vous devrez creer une BDD
-    'database' => 'ferrierl',  // a changer mettre le nom de la database où on hebergera le site
+    'database' => 'fonzesp',  // a changer mettre le nom de la database où on hebergera le site
     // A l'IUT, c'est votre login
     // Sur votre machine, vous avez surement un compte 'root'
-    'login' => 'ferrierl',
+    'login' => 'fonzesp',
     // A l'IUT, c'est votre mdp (INE par defaut)
     // Sur votre machine personelle, vous avez creez ce mdp a l'installation
-    'password' => '061004132EB'
+    'password' => '071581765GE'
   );
   static private $debug = True; 
     
