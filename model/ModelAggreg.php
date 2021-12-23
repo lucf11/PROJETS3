@@ -22,13 +22,24 @@ class ModelAggreg{
     public function setCoeff($coeff){
         $this->coeff = $coeff;
     }
-
     public function setNom($nom){
         $this->nom = $nom;
     }
     public function setCate($cate){
         $this->categorie = $cate;
     }
+    // public static function getAllAgreg(){
+    //     require_once('Model.php');
+    //     try{
+    //         $rep = Model::getPDO()->query('SELECT * FROM projets3_notes_agreger');
+    //         $rep->setFetchMode(PDO::FETCH_CLASS, 'ModelAgreg');
+    //         $tab_Agreg = $rep->fetchAll();      
+    //     }
+    //     catch(PDOException $e){
+    //         echo $e->getMessage();
+    //     }
+    //     return $tab_Agreg;
+    // }
 
     public static function getAllAgreg(){
        
@@ -50,7 +61,6 @@ class ModelAggreg{
             return false;
         return $tab_agreg;
     }
-
     public static function getModules($idAggreg){
         //var_dump($idAggreg);
         $id = $idAggreg[0];
@@ -113,7 +123,7 @@ class ModelAggreg{
     public  function save(){
         require_once 'Model.php';
         //'". str_replace( "'", "''", $s ) ."' 
-        $sql = "INSERT INTO projets3_notes_agreger (nom,coeff,categorie) VALUES('$this->nom','$this->coeff','$this->categorie')";
+        $sql = "INSERT INTO projets3_notes_agreger (nom, coeff, categorie) VALUES('$this->nom','$this->coeff','$this->categorie')";
         //echo $sql;
         //die();
         // Préparation de la requête
@@ -246,29 +256,54 @@ class ModelAggreg{
         } 
         
     }
-    /*public function sommeCoeffAggreg($idAggreg){
-        require_once('Model.php');
-        require_once('ModelModule.php');
-        $cpt = 0;
-        $sql = "SELECT coeff FROM projets3_notes_agreger WHERE idAgregation IN (SELECT idAggregR FROM projets3_listemoduleagreger WHERE idAgregation:=nomtag)";
+    public static function getCategorie($id){
+        require_once 'Model.php';
+        $sql = "SELECT categorie FROM projets3_notes_agreger WHERE idAgregation={$id}";
+        // Préparation de la requête
         try{
             $req_prep = Model::getPDO()->prepare($sql);
-
-            $values = array(
-                "nomtag" => $idAggreg,
-            //nomdutag => valeur, ...
-            );
-
-            $req_prep->execute($values);
-            $req_prep->setFetchMode(PDO::FETCH_CLASS, 'INT');//on récupère des entiers 
-            $tab_coeffs = $req_prep->fetchAll();
-            foreach($tab_coeffs as $coeff){//on boucle sur le tablo de tous les coeffs 
-                $cpt = $cpt + $coeff;//on somme les coeffs
-            }
-            return $cpt;//on retourne cette somme
+            $req_prep->execute();
+            $req_prep->setFetchMode(PDO::FETCH_CLASS, 'string');//on récupère des entiers 
+            $cate = $req_prep->fetchAll();
         }catch(PDOException $e){
             echo $e->getMessage();
         }
-    }*/
+        return $cate;  
+    }
+
+    public static function produireAvis($Aggreg,$note){
+        //recuperer la categorie de l'aggreg avec une fonction ou requete sql
+        $nom = self::getAgregByID($Aggreg);
+        $nom = $nom->getNom();
+        require_once 'ModelCategorie.php';
+        $cat = self::getCategorie($Aggreg);
+        //var_dump($cat);
+        $categorie = ModelCategorie::getCategorieByID($cat[0][0]);
+        //var_dump($categorie);
+        //var_dump($categorie);
+        //faire un switch avec :
+        if($categorie->getnomCate()!="cate"){
+            echo $nom . "  :";
+            $avis = "";
+            if($note<$categorie->getpalierBas()){
+                $avis = "Pas Favorable";
+                return $avis;
+            }
+            else if($note>=$categorie->getpalierBas() && $note<$categorie->getpalierMoyen()){
+                $avis = "Favorable";
+                return $avis;
+            }
+            else{
+                $avis = "Très Favorable";
+                return $avis;
+            }
+        }
+        //si c'est 'iut' on ne produit pas d'avis
+        //si c'est licence ... -> fixer les paliers et renvoyer l'avis 
+        //ainsi de suite pour toutes les catégoies(5 en tout);
+    }
+    
 }
 ?>
+
+
