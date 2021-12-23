@@ -52,8 +52,8 @@ class ControllerCategorie {
         $palierBas = $_POST['palierBas'];
         $palierMoyen = $_POST['palierMoyen'];
         $palierHaut = $_POST['palierHaut'];
-        $categorie->update($palierBas,$palierMoyen,$palierHaut);
-        if ($test === false){
+        $categorie->update($palierBas,$palierMoyen,$palierHaut,$cate);
+        if ($categorie === false){
             $view = 'error';
             $pagetitle = "Erreur modification de la catégorie";
             $controller = 'categorie';
@@ -61,11 +61,11 @@ class ControllerCategorie {
             require ($filepath);
 
         } else {
-            $view = 'updated';
-            $pagetitle = 'catégorie modifiée';
+            echo 'Modification réussie';
+            ControllerCategorie::readAll();
             $controller = 'categorie';
             $filepath = File::build_path(array("view",$controller, "view.php"));
-            require ($filepath);
+            require ($filepath);  //"redirige" vers la vue
             
         }
     }

@@ -82,9 +82,10 @@ class ModelCategorie{
 
     }
 
-    public function update($palierB,$palierM,$palierH){
+    public function update($palierB,$palierM,$palierH,$nom){
+        //var_dump($this->nomCate);
         require_once "Model.php";
-        $sql = "UPDATE categorie SET palierBas=nom_tag , palierMoyen=nom__tag , palierHaut=nom___tag WHERE nomCate={$this->nomCate}";
+        $sql = "UPDATE categorie SET palierBas=:nom_tag , palierMoyen=:nom__tag , palierHaut=:nom___tag, nomCate=:nom____tag WHERE nomCate='{$this->nomCate}'";
         // Préparation de la requête
         try{
             $req_prep = Model::getPDO()->prepare($sql);
@@ -93,6 +94,7 @@ class ModelCategorie{
                 "nom_tag" => $palierB,
                 "nom__tag" => $palierM,
                 "nom___tag" => $palierH,
+                "nom____tag" =>$nom,
                 //nomdutag => valeur, ...
             );
             // On donne les valeurs et on exécute la requête     
