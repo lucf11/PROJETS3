@@ -3,7 +3,7 @@
     <legend>Créez une note agréger :</legend>
     <p>
       
-      <input type="text" placeholder="idAgregation" name="idAgregation" id="idAgregation" required/>
+      <!-- <input type="text" placeholder="idAgregation" name="idAgregation" id="idAgregation" required/> -->
       
       <input type="text" placeholder="nom" name="nom" id="nom_id" required/>
       <input type="text" placeholder="coeff" name="coeff" id="coeff_id" required/>
@@ -22,6 +22,18 @@
           }
         }
     ?>
+    
+    <p>Cochez la catégorie de la note agreger</p>
+    <select name="cate" id="cate-select">
+      <option value="">Choix catégorie</option>
+      <?php
+        if(!empty($tab_cate)){
+          foreach($tab_cate as $c){
+              echo '<option value="'.$c->getNomCate().'">'.$c->getNomCate().'</option>';
+          }
+        }
+      ?>
+    </select>
     <p>
       <input type="submit" value="Envoyer" />
     </p>

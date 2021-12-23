@@ -4,6 +4,8 @@ require_once File::build_Path($model_path_array); // chargement du modèle//TODO
 $model_path_array = array('model/ModelModule.php');
 require_once File::build_Path($model_path_array); // chargement du modèle//TODO : utiliser le filepath pour portabilité
 // require_once ('../model/ModelAggreg.php'); // chargement du modèle
+$model_path_array = array('model/ModelCategorie.php');
+require_once File::build_Path($model_path_array);
 
 class ControllerAgreg{
 
@@ -37,6 +39,7 @@ class ControllerAgreg{
         $controller = 'agreg';
         $tab_module = ModelModule::getAllModules(); 
         $tab_agreg = ModelAggreg::getAllAgreg();
+        $tab_cate = ModelCategorie::getAllCate();
         $filepath = File::build_path(array("view",$controller, "view.php"));
         require ($filepath);  //"redirige" vers la vue
     }
@@ -44,12 +47,15 @@ class ControllerAgreg{
     public static function created(){
     	$nom = $_POST['nom'];
     	$coeff = $_POST['coeff'];
-        $idAgreg = $_POST['idAgregation'];
-    	$agregation = new ModelAggreg($idAgreg,$nom,$coeff);
-        // $agregation->setCoeff($coeff);
-        // $agregation->setNom($nom);
+        $cate = $_POST['cate'];
+        // $idAgreg = $_POST['idAgregation'];
+    	$agregation = new ModelAggreg();
+        $agregation->setCoeff($coeff);
+        $agregation->setCate($cate);
+        $agregation->setNom($nom);
     	$agregation->save();
-        $id = "SELECT idAgregation FROM projetS3_NOTES_AGREGER ORDER BY idAgregation DESC LIMIT 1";
+        // $id = "SELECT idAgregation FROM projets3_notes_agreger ORDER BY idAgregation DESC LIMIT 1";
+        $id = "SELECT MAX(idAgregation) FROM projets3_notes_agreger";
         try{
             $req_prep1 = Model::getPDO()->prepare($id);
             $req_prep1->execute();
@@ -62,7 +68,7 @@ class ControllerAgreg{
         if(!empty($_POST['module'])){
 
             foreach($_POST['module'] as $value){
-                $insertListe = "INSERT INTO projetS3_ListeModuleAgreger VALUES('{$idAgregation[0][0]}','{$value}')";
+                $insertListe = "INSERT INTO projets3_listemoduleagreger VALUES('{$idAgregation[0][0]}','{$value}','0')";
                 //echo $sql;
                 //die();
                 // Préparation de la requête
@@ -77,7 +83,7 @@ class ControllerAgreg{
         if(!empty($_POST['agreg'])){
             
             foreach($_POST['agreg'] as $v){
-                $insListe = "INSERT INTO projetS3_ListeModuleAgreger VALUES('{$idAgregation[0][0]}','{$v}')";
+                $insListe = "INSERT INTO projets3_listemoduleagreger VALUES('{$idAgregation[0][0]}',NULL,'{$v}')";
                 //echo $sql;
                 //die();
                 // Préparation de la requête

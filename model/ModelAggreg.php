@@ -4,6 +4,7 @@ class ModelAggreg{
     private $idAgregation;
     private $nom;
     private $coeff;
+    private $categorie;
 
 
     public function getIdAgregation(){
@@ -25,11 +26,14 @@ class ModelAggreg{
     public function setNom($nom){
         $this->nom = $nom;
     }
+    public function setCate($cate){
+        $this->categorie = $cate;
+    }
 
     public static function getAllAgreg(){
        
         require_once "Model.php";
-        $sql = "SELECT * from projetS3_NOTES_AGREGER";
+        $sql = "SELECT * from projets3_notes_agreger";
         // Préparation de la requête
         try{
             $req_prep = Model::getPDO()->prepare($sql);
@@ -72,7 +76,7 @@ class ModelAggreg{
 
     public static function getAgregByID($id){
         require_once "Model.php";
-            $sql = "SELECT * from NOTES_AGREGER WHERE idAgregation=:nom_tag";
+            $sql = "SELECT * from projets3_notes_agreger WHERE idAgregation=:nom_tag";
             // Préparation de la requête
             try{
                 $req_prep = Model::getPDO()->prepare($sql);
@@ -97,18 +101,19 @@ class ModelAggreg{
         
     }
 
-    public function __construct($idAgregation = NULL, $nom = NULL, $coeff = NULL) {
-        if(!is_null($idAgregation)&& !is_null($nom)&& !is_null($coeff)){
+    public function __construct($idAgregation = NULL, $nom = NULL, $coeff = NULL, $categorie = NULL) {
+        if(!is_null($idAgregation)&& !is_null($nom)&& !is_null($coeff) && !is_null($categorie)){
             $this->idAgregation = $idAgregation;
             $this->nom = $nom;
             $this->coeff = $coeff;
+            $this->categorie = $categorie;
         }
     }
 
     public  function save(){
         require_once 'Model.php';
         //'". str_replace( "'", "''", $s ) ."' 
-        $sql = "INSERT INTO projetS3_NOTES_AGREGER VALUES('$this->idAgregation','$this->nom','$this->coeff')";
+        $sql = "INSERT INTO projets3_notes_agreger (nom,coeff,categorie) VALUES('$this->nom','$this->coeff','$this->categorie')";
         //echo $sql;
         //die();
         // Préparation de la requête
@@ -132,7 +137,7 @@ class ModelAggreg{
         require_once('Model.php');
         require_once('ModelModule.php');
         $moyenne = 0;
-        $sql = "SELECT idAggregR FROM projetS3_ListeModuleAgreger WHERE idAgregation=:nomtag AND idAggregR IS NOT NULL";
+        $sql = "SELECT idAggregR FROM projets3_listemoduleagreger WHERE idAgregation=:nomtag AND idAggregR IS NOT NULL";
         try{
             $req_prep = Model::getPDO()->prepare($sql);
 
@@ -194,7 +199,7 @@ class ModelAggreg{
         require_once('ModelModule.php');
         $moyenne = 0;
         $cpt = 0;
-        $sql = "SELECT idModule FROM projetS3_ListeModuleAgreger WHERE idAgregation=:nom_tag AND idModule IS NOT NULL";
+        $sql = "SELECT idModule FROM projets3_listemoduleagreger WHERE idAgregation=:nom_tag AND idModule IS NOT NULL";
         
         try{
             $req_prep = Model::getPDO()->prepare($sql);

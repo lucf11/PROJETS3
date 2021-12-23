@@ -19,7 +19,7 @@ class ModelModule {
     public function getCoeff(){
         if($this->coefModule==null){//voir méthode calculerNoteV2 pour comprendre
             require_once "Model.php";
-            $sql = "SELECT coefModule from projetS3_Module WHERE idModule='{$this->idModule}'";
+            $sql = "SELECT coefModule from projets3_module WHERE idModule='{$this->idModule}'";
             // Préparation de la requête
             try{
                 $req_prep = Model::getPDO()->prepare($sql);
@@ -37,7 +37,7 @@ class ModelModule {
     }
     public static function getModulebyID($id) {
         require_once "Model.php";
-        $sql = "SELECT * from projetS3_Module WHERE idModule=:nom_tag";
+        $sql = "SELECT * from projets3_module WHERE idModule=:nom_tag";
         // Préparation de la requête
         try{
             $req_prep = Model::getPDO()->prepare($sql);
@@ -63,7 +63,7 @@ class ModelModule {
     public static function getAllModules(){
         require_once('Model.php');
         try{
-            $rep = Model::getPDO()->query('SELECT * FROM projetS3_Module');
+            $rep = Model::getPDO()->query('SELECT * FROM projets3_module');
             $rep->setFetchMode(PDO::FETCH_CLASS, 'ModelModule');
             $tab_mods = $rep->fetchAll();      
         }
@@ -77,7 +77,7 @@ class ModelModule {
         require_once "Model.php";
         //var_dump($this->idModule);
         //var_dump($id);
-        $sql = "SELECT noteModule from projetS3_NoteModule WHERE numNIP=:nom_tag AND idModule='{$this->idModule}'";//sélection de la note de l'étudiant sur le module correspondant
+        $sql = "SELECT noteModule from projets3_notemodule WHERE codeNIP=:nom_tag AND idModule='{$this->idModule}'";//sélection de la note de l'étudiant sur le module correspondant
         // Préparation de la requête
         try{
             $req_prep = Model::getPDO()->prepare($sql);
@@ -103,7 +103,7 @@ class ModelModule {
     
     public static function getAggregbyID($idAggreg){
         require_once "Model.php";
-        $sql = "SELECT idModule from projetS3_ListeModuleAgreger WHERE idAgregation=:nom_tag";
+        $sql = "SELECT idModule from projets3_listemoduleagreger WHERE idAgregation=:nom_tag";
         // Préparation de la requête
         try{
             $req_prep = Model::getPDO()->prepare($sql);

@@ -32,7 +32,7 @@ class ModelUtilisateur {
 
     public static function checkPassword($login, $mdp){
         require_once('Model.php');
-        $rep = Model::getPDO()->query("SELECT * FROM projetS3_Utilisateur WHERE idUtilisateur='$login' and password='$mdp'");
+        $rep = Model::getPDO()->query("SELECT * FROM projets3_utilisateur WHERE idUtilisateur='$login' and password='$mdp'");
         $req_rep = Model::getPDO()->prepare($rep);
         $req_rep->execute();
         $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelUtilisateur');
@@ -47,7 +47,7 @@ class ModelUtilisateur {
     public static function getAllUtilisateurs(){
         require_once('Model.php');
         try{
-            $rep = Model::getPDO()->query('SELECT * FROM projetS3_Utilisateur');
+            $rep = Model::getPDO()->query('SELECT * FROM projets3_utilisateur');
             $rep->setFetchMode(PDO::FETCH_CLASS, 'ModelUtilisateur');
             $tab_Utils = $rep->fetchAll();      
         }
@@ -58,7 +58,7 @@ class ModelUtilisateur {
     }
     public static function getUtilbyID($id){
         require_once "Model.php";
-        $sql = "SELECT * from projetS3_Utilisateur WHERE idUtilisateur=:nom_tag";
+        $sql = "SELECT * from projets3_utilisateur WHERE idUtilisateur=:nom_tag";
         // Préparation de la requête
         try{
             $req_prep = Model::getPDO()->prepare($sql);
@@ -84,7 +84,7 @@ class ModelUtilisateur {
     public  function save(){
         require_once 'Model.php';
         //'". str_replace( "'", "''", $s ) ."' 
-        $sql = "INSERT INTO projetS3_Utilisateur VALUES('$this->idUtilisateur','$this->password','$this->permission')";
+        $sql = "INSERT INTO projets3_utilisateur VALUES('$this->idUtilisateur','$this->password','$this->permission')";
         //echo $sql;
         //die();
         // Préparation de la requête
