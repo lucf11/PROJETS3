@@ -1,0 +1,18 @@
+//Comment importer un fichier//
+
+Le format du fichier doit obligatoirement être en format csv.
+L'importation se fait semèstre par semèstre . En choisissant pour chaque semèstre le fichier correspondant .
+Uner fois le fichier choisit l'utilisateur a juste à appuyer sur import , pour directement importer les données dans la base de données.
+
+// A quoi correspondent les données // 
+
+Pour chaque étudiant il y aura en clef primaire le code NIP correspondant ainsi qu'un idDossier renvoyant vers le dossier de l'etudiant ou seront stocké les avis . Un idDossier correspond juste à son codeNIP précedé d'un d .
+
+L'importation permet d'importer toutes les notes sous le format : idModule , codeNIP , note . L'idModule permet de connaitre le module auquel correspond la note , le codeNIP correspond à l'etudiant concerné par la note.
+
+
+Pour la table semestreEtud chaque ligne a pour clef primaire un codeNIP et un idée semestre qui est sous la forme  : codeNIP+"numero semestre". 
+exemple -> 
+etudiant :21702055 , numeroSemestre : 2 , idSemestre : 	217020552.
+
+//
